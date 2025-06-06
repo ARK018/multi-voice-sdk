@@ -32,7 +32,7 @@
     "ai",
     "audio-processing"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "Akshay Kambli <https://github.com/ARK018>",
   "license": "ISC",
   "dependencies": {
     "@deepgram/sdk": "^4.2.0",
