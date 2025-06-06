@@ -1,0 +1,13 @@
+# Environment variables
+.env
+.env.*
+
+# Dependencies
+node_modules/
+
+# Testing
+testing/
+
+# OS files
+.DS_Store
+Thumbs.db
