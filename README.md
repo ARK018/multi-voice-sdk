@@ -22,7 +22,7 @@ npm install multi-voice-sdk
 import { tts, merge } from "multi-voice-sdk";
 
 // Generate speech with OpenAI
-await tts({
+tts({
   provider: "openai",
   apiKey: "your-api-key",
   text: "Hello, world!",
@@ -31,7 +31,7 @@ await tts({
 });
 
 // Merge multiple audio files
-await merge({
+merge({
   inputFiles: ["file1.mp3", "file2.mp3"],
   outputFile: "combined.mp3",
 });
@@ -60,7 +60,7 @@ Generate speech from text using various TTS providers.
 **OpenAI TTS**
 
 ```javascript
-await tts({
+tts({
   provider: "openai",
   apiKey: process.env.OPENAI_API_KEY,
   model: "gpt-4o-mini-tts",
@@ -74,7 +74,7 @@ await tts({
 **Google Gemini TTS**
 
 ```javascript
-await tts({
+tts({
   provider: "gemini",
   apiKey: process.env.GEMINI_API_KEY,
   text: "Hello from Gemini!",
@@ -87,7 +87,7 @@ await tts({
 **Deepgram TTS**
 
 ```javascript
-await tts({
+tts({
   provider: "deepgram",
   apiKey: process.env.DEEPGRAM_API_KEY,
   text: "Hello from Deepgram!",
@@ -110,7 +110,7 @@ Merge multiple audio files into a single file.
 #### Example
 
 ```javascript
-await merge({
+merge({
   inputFiles: ["intro.mp3", "main.mp3", "outro.mp3"],
   outputFile: "complete_audio.mp3",
 });
