@@ -1,6 +1,6 @@
 {
   "name": "multi-voice-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A universal Text-to-Speech SDK supporting multiple providers (OpenAI, Google Gemini, Deepgram) with audio merging capabilities",
   "main": "index.js",
   "type": "module",
