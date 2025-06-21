@@ -8,6 +8,11 @@ node_modules/
 # Testing
 testing/
 
+# Example files
+example.js
+
 # OS files
 .DS_Store
 Thumbs.db
+
+

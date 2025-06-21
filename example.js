@@ -1,18 +1,7 @@
 import dotenv from "dotenv";
-import { tts } from "./index.js";
-import { merge } from "./index.js";
+import { tts, stt, merge } from "./index.js";
 
 dotenv.config();
-
-// Gemini TTS Example
-tts({
-  provider: "gemini",
-  apiKey: process.env.GEMINI_API_KEY,
-  prompt: "In a pleasant and calm tone.",
-  text: "Hello! This is a test using the Gemini's tts model.",
-  voice: "iapetus",
-  outputFile: "gemini_tts_output.mp3", // Optional
-});
 
 // Deepgram TTS Example
 tts({
@@ -20,21 +9,27 @@ tts({
   apiKey: process.env.DEEPGRAM_API_KEY,
   text: "Hello! This is a test using the Deepgrams's Aura-2 tts model.",
   voice: "aura-2-luna-en",
+  outputFile: "output_1.mp3",
 });
 
-// OpenAI TTS Example
 tts({
-  provider: "openai",
-  apiKey: process.env.OPENAI_API_KEY,
-  model: "gpt-4o-mini-tts",
-  prompt: "Speak in a cheerful and energetic tone.",
-  text: "Hello! This is a test using GPT-4o-mini-TTS with custom instructions.",
-  voice: "nova",
-  outputFile: "openai_tts_output.mp3", // Optional
+  provider: "deepgram",
+  apiKey: process.env.DEEPGRAM_API_KEY,
+  text: "This voice is called Luna.",
+  voice: "aura-2-luna-en",
+  outputFile: "output_2.mp3",
 });
 
-// File merge Example
+// Deepgram STT Example
+stt({
+  provider: "deepgram",
+  apiKey: process.env.DEEPGRAM_API_KEY,
+  audioFile: "https://dpgr.am/spacewalk.wav",
+  outputFile: "transcription.json",
+});
+
+// File merge Example [First there should be two audio files for this to work]
 merge({
-  inputFiles: ["gemini_tts_output.mp3", "openai_tts_output.mp3"],
+  inputFiles: ["output_1.mp3", "output_2.mp3"],
   outputFile: "Combined.mp3",
 });
