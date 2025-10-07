@@ -1,9 +1,9 @@
 import dotenv from "dotenv";
-import { tts, stt, merge } from "./index.js";
+import { tts, stt, merge, llm } from "./index.js";
 
 dotenv.config();
 
-// Deepgram TTS Example
+//Deepgram TTS Example
 tts({
   provider: "deepgram",
   apiKey: process.env.DEEPGRAM_API_KEY,
@@ -32,4 +32,14 @@ stt({
 merge({
   inputFiles: ["output_1.mp3", "output_2.mp3"],
   outputFile: "Combined.mp3",
+});
+
+// OpenAI LLM Example (uncomment to use)
+llm({
+  apiKey: process.env.OPENAI_API_KEY,
+  text: "Write in short about pytorch",
+  model: "gpt-4o-mini",
+  temperature: 0.8,
+}).then((response) => {
+  console.log("Generated text:", response);
 });
