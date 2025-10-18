@@ -96,3 +96,54 @@ export interface STTResult {
  * @returns Promise that resolves with transcript string (default) or full transcription results object
  */
 export function stt(options: STTOptions): Promise<string | STTResult>;
+
+export interface LLMOptions {
+  /** OpenAI API key */
+  apiKey: string;
+  /** Input text/prompt */
+  text: string;
+  /** Model to use (default: "gpt-4o-mini") */
+  model?: string;
+  /** System message to set context */
+  systemPrompt?: string;
+  /** Sampling temperature (0-2, default: 0.7) */
+  temperature?: number;
+  /** Maximum tokens to generate */
+  maxTokens?: number;
+  /** Whether to stream the response (default: false) */
+  stream?: boolean;
+}
+
+export interface LLMChatOptions {
+  /** OpenAI API key */
+  apiKey: string;
+  /** Conversation history */
+  messages: Array<{
+    role: "system" | "user" | "assistant";
+    content: string;
+  }>;
+  /** Model to use (default: "gpt-4o-mini") */
+  model?: string;
+  /** Sampling temperature (0-2, default: 0.7) */
+  temperature?: number;
+  /** Maximum tokens to generate */
+  maxTokens?: number;
+  /** Whether to stream the response (default: false) */
+  stream?: boolean;
+}
+
+/**
+ * Generate text using OpenAI's language models
+ * @param options - LLM configuration options
+ * @returns Promise that resolves with generated text or stream
+ */
+export function llm(options: LLMOptions): Promise<string | AsyncGenerator>;
+
+/**
+ * Generate text using OpenAI's language models with conversation history
+ * @param options - LLM chat configuration options
+ * @returns Promise that resolves with generated text or stream
+ */
+export function llmChat(
+  options: LLMChatOptions
+): Promise<string | AsyncGenerator>;
