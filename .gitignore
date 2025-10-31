@@ -6,7 +6,7 @@
 node_modules/
 
 # Testing
-testing/
+test/
 
 # Example files
 example.js
